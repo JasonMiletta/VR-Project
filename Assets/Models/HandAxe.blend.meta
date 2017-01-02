@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9d93df15662496f4bb653481b563515b
-timeCreated: 1483322877
+guid: 4606fa1e5f6ba92498c9826d5ba13e04
+timeCreated: 1483320797
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Crossbow
+    4300000: HandAxe
     6400000: //RootNode
     7400000: Default Take
     9500000: //RootNode
