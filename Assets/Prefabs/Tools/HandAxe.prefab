@@ -214,7 +214,7 @@ MonoBehaviour:
   isDroppable: 1
   isSwappable: 1
   holdButtonToGrab: 0
-  grabOverrideButton: 8
+  grabOverrideButton: 4
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
   precisionSnap: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
   leftSnapHandle: {fileID: 4000013879877318}
   hideControllerOnGrab: 0
   stayGrabbedOnTeleport: 1
-  grabAttachMechanic: 3
-  detachThreshold: 10000
+  grabAttachMechanic: 0
+  detachThreshold: 100000
   springJointStrength: 10000
   springJointDamper: 50
   throwMultiplier: 1
