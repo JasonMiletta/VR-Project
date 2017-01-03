@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011882720104}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.001, y: 0.714, z: -9.119}
+  m_LocalPosition: {x: 1.001, y: 0.773, z: -9.119}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1.25}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -121,9 +121,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011882720104}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -139,7 +139,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 4606fa1e5f6ba92498c9826d5ba13e04, type: 3}
 --- !u!65 &65000012372378780
 BoxCollider:
@@ -209,15 +209,19 @@ MonoBehaviour:
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
   rumbleOnTouch: {x: 0, y: 0}
   allowedTouchControllers: 0
+  hideControllerOnTouch: 0
   isGrabbable: 1
   isDroppable: 1
   isSwappable: 1
   holdButtonToGrab: 0
+  grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
   precisionSnap: 0
   rightSnapHandle: {fileID: 4000013879877318}
   leftSnapHandle: {fileID: 4000013879877318}
+  hideControllerOnGrab: 0
+  stayGrabbedOnTeleport: 1
   grabAttachMechanic: 3
   detachThreshold: 10000
   springJointStrength: 10000
@@ -225,7 +229,11 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   isUsable: 0
+  useOnlyIfGrabbed: 0
   holdButtonToUse: 1
+  useOverrideButton: 8
   pointerActivatesUseAction: 0
   rumbleOnUse: {x: 0, y: 0}
   allowedUseControllers: 0
+  hideControllerOnUse: 0
+  usingState: 0
