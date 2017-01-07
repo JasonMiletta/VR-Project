@@ -12,8 +12,7 @@ public class Crossbow : VRTK_InteractableObject {
     Vector3 _boltLoadPointLocation;
 
 	// Use this for initialization
-	protected override void Start () {
-        base.Start();
+	protected void Start () {
 
         if(boltLoadPoint != null)
         {
