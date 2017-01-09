@@ -43,6 +43,7 @@ GameObject:
   - 65: {fileID: 65000012372378780}
   - 65: {fileID: 65000013797561874}
   - 65: {fileID: 65000014219129648}
+  - 114: {fileID: 114000010855825662}
   m_Layer: 0
   m_Name: HandAxe
   m_TagString: Untagged
@@ -194,6 +195,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010855825662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011882720104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1ebaa51525b734287157cb3f53f958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precisionGrab: 0
+  rightSnapHandle: {fileID: 4000013879877318}
+  leftSnapHandle: {fileID: 4000013879877318}
+  throwVelocityWithAttachDistance: 0
+  throwMultiplier: 1
+  onGrabCollisionDelay: 0
+  detachDistance: 50
 --- !u!114 &114000012867225502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,35 +224,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightOnTouch: 0
+  disableWhenIdle: 1
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
-  rumbleOnTouch: {x: 0, y: 0}
   allowedTouchControllers: 0
-  hideControllerOnTouch: 0
   isGrabbable: 1
-  isDroppable: 1
-  isSwappable: 1
   holdButtonToGrab: 0
-  grabOverrideButton: 4
-  rumbleOnGrab: {x: 0, y: 0}
-  allowedGrabControllers: 0
-  precisionSnap: 0
-  rightSnapHandle: {fileID: 4000013879877318}
-  leftSnapHandle: {fileID: 4000013879877318}
-  hideControllerOnGrab: 0
   stayGrabbedOnTeleport: 1
-  grabAttachMechanic: 0
-  detachThreshold: 100000
-  springJointStrength: 10000
-  springJointDamper: 50
-  throwMultiplier: 1
-  onGrabCollisionDelay: 0
+  validDrop: 1
+  grabOverrideButton: 4
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
   isUsable: 0
-  useOnlyIfGrabbed: 0
   holdButtonToUse: 1
-  useOverrideButton: 8
+  useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
-  rumbleOnUse: {x: 0, y: 0}
+  useOverrideButton: 8
   allowedUseControllers: 0
-  hideControllerOnUse: 0
   usingState: 0
