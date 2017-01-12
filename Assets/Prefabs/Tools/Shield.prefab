@@ -187,7 +187,7 @@ MonoBehaviour:
   holdButtonToGrab: 0
   stayGrabbedOnTeleport: 1
   validDrop: 1
-  grabOverrideButton: 4
+  grabOverrideButton: 0
   allowedGrabControllers: 0
   grabAttachMechanicScript: {fileID: 0}
   secondaryGrabActionScript: {fileID: 0}

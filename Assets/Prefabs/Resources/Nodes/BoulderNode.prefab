@@ -122,4 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resource: {fileID: 1000012884201524, guid: 090af1bd1b37d12418b7b8b870dc8783, type: 2}
   nodeHealth: 3
-  dropCooldown: 1
+  dropCooldown: 0.2

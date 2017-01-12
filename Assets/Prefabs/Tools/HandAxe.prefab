@@ -44,6 +44,7 @@ GameObject:
   - 65: {fileID: 65000013797561874}
   - 65: {fileID: 65000014219129648}
   - 114: {fileID: 114000010855825662}
+  - 114: {fileID: 114000013879496480}
   m_Layer: 0
   m_Name: HandAxe
   m_TagString: Untagged
@@ -71,10 +72,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010076028624}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0, z: -0.0428}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_Children: []
   m_Father: {fileID: 4000013575862028}
   m_RootOrder: 0
@@ -231,7 +232,7 @@ MonoBehaviour:
   holdButtonToGrab: 0
   stayGrabbedOnTeleport: 1
   validDrop: 1
-  grabOverrideButton: 4
+  grabOverrideButton: 0
   allowedGrabControllers: 0
   grabAttachMechanicScript: {fileID: 0}
   secondaryGrabActionScript: {fileID: 0}
@@ -239,6 +240,17 @@ MonoBehaviour:
   holdButtonToUse: 1
   useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
-  useOverrideButton: 8
+  useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114000013879496480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011882720104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7092d9e056b91d349ab0e3ee2849e628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
