@@ -17,13 +17,13 @@ EditorBuildSettings:
     path: Assets/VRSampleScenes/Scenes/Shooter360.unity
   - enabled: 0
     path: Assets/VRSampleScenes/Scenes/Shooter180.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/SteamVR_Unity_Toolkit/Examples/030_Controls_RadialTouchpadMenu.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/SteamVR_Unity_Toolkit/Examples/009_Controller_BezierPointer.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/SteamVR_Unity_Toolkit/Examples/013_Controller_UsingAndGrabbingMultipleObjects.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/SteamVR_Unity_Toolkit/Examples/029_Controller_Tooltips.unity
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
