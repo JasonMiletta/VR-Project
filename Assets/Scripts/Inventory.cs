@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 
-    public List<Item> inventoryList = new List<Item>();
+    public Item[,] inventoryList = new Item[2, 2];
 
 	// Use this for initialization
 	void Start () {
@@ -18,13 +18,13 @@ public class Inventory : MonoBehaviour {
 
     public void addItemToInventory(Item newItem)
     {
-        inventoryList.Add(newItem);
+        return;
     }
 
-    public Item getItemFromInventoryByIndex(int index)
+    public Item getItemFromInventoryByIndex(int rowX, int colY)
     {
-        Item retrievedItem = inventoryList[index];
-        inventoryList.RemoveAt(index);
+        Item retrievedItem = inventoryList[rowX, colY];
+        inventoryList[rowX, colY] = null;
 
         return retrievedItem;
     }
