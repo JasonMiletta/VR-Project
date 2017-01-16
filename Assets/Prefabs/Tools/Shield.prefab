@@ -43,6 +43,7 @@ GameObject:
   - 65: {fileID: 65000013149818882}
   - 114: {fileID: 114000012460632928}
   - 114: {fileID: 114000011707093214}
+  - 114: {fileID: 114000010110660548}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -169,6 +170,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010110660548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011105762538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7092d9e056b91d349ab0e3ee2849e628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011316325088
 MonoBehaviour:
   m_ObjectHideFlags: 1
