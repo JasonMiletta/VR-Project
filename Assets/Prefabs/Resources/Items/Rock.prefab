@@ -26,6 +26,7 @@ GameObject:
   - 54: {fileID: 54000011647908380}
   - 114: {fileID: 114000013673514252}
   - 114: {fileID: 114000010934236274}
+  - 114: {fileID: 114000012020719650}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  touchHighlightColor: {r: 1, g: 0.9724138, b: 0, a: 0.478}
   allowedTouchControllers: 0
   isGrabbable: 1
   holdButtonToGrab: 0
@@ -155,6 +156,21 @@ MonoBehaviour:
   useOverrideButton: 8
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114000012020719650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012884201524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  thickness: 0.5
+  customOutlineModel: {fileID: 0}
+  customOutlineModelPath: 
 --- !u!114 &114000013673514252
 MonoBehaviour:
   m_ObjectHideFlags: 1

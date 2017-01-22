@@ -45,6 +45,7 @@ GameObject:
   - 65: {fileID: 65000014219129648}
   - 114: {fileID: 114000010855825662}
   - 114: {fileID: 114000013879496480}
+  - 114: {fileID: 114000010745312918}
   m_Layer: 0
   m_Name: HandAxe
   m_TagString: Untagged
@@ -196,6 +197,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010745312918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011882720104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  thickness: 0.5
+  customOutlineModel: {fileID: 0}
+  customOutlineModelPath: 
 --- !u!114 &114000010855825662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  touchHighlightColor: {r: 0.9862069, g: 1, b: 0, a: 0.497}
   allowedTouchControllers: 0
   isGrabbable: 1
   holdButtonToGrab: 0

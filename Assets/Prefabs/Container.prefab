@@ -200,6 +200,7 @@ GameObject:
   - 114: {fileID: 114000013809809422}
   - 54: {fileID: 54000012569963752}
   - 114: {fileID: 114000012839488490}
+  - 114: {fileID: 114000010305646546}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -1255,6 +1256,21 @@ MonoBehaviour:
   checkType: 2
   identifiers:
   - Item
+--- !u!114 &114000010305646546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012169916134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  thickness: 0.5
+  customOutlineModel: {fileID: 0}
+  customOutlineModelPath: 
 --- !u!114 &114000010814844710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1410,7 +1426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  touchHighlightColor: {r: 0.986207, g: 1, b: 0, a: 0.547}
   allowedTouchControllers: 0
   isGrabbable: 1
   holdButtonToGrab: 0

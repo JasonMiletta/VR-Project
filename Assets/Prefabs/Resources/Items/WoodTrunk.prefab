@@ -26,6 +26,7 @@ GameObject:
   - 54: {fileID: 54000010172894014}
   - 114: {fileID: 114000012184225004}
   - 114: {fileID: 114000011212719990}
+  - 114: {fileID: 114000014244361974}
   m_Layer: 0
   m_Name: WoodTrunk
   m_TagString: Untagged
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  touchHighlightColor: {r: 0.9862069, g: 1, b: 0, a: 0.516}
   allowedTouchControllers: 0
   isGrabbable: 1
   holdButtonToGrab: 0
@@ -167,3 +168,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7092d9e056b91d349ab0e3ee2849e628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000014244361974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011969469998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  thickness: 0.5
+  customOutlineModel: {fileID: 0}
+  customOutlineModelPath: 

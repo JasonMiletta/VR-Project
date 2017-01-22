@@ -29,6 +29,7 @@ GameObject:
   - 65: {fileID: 65000011717845874}
   - 114: {fileID: 114000012006560628}
   - 114: {fileID: 114000011633606394}
+  - 114: {fileID: 114000011075109952}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -183,6 +184,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf2d62440edea34bb9fba117078c792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011075109952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011700177070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  thickness: 0.5
+  customOutlineModel: {fileID: 0}
+  customOutlineModelPath: 
 --- !u!114 &114000011633606394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  touchHighlightColor: {r: 1, g: 0.9724138, b: 0, a: 0.484}
   allowedTouchControllers: 0
   isGrabbable: 1
   holdButtonToGrab: 0
