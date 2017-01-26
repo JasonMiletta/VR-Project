@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 
-    public Item[,] inventoryList = new Item[2, 2];
+    [SerializeField]
+    public Item[] inventoryList = new Item[2];
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +22,12 @@ public class Inventory : MonoBehaviour {
         return;
     }
 
+    /*
     public Item getItemFromInventoryByIndex(int rowX, int colY)
     {
         Item retrievedItem = inventoryList[rowX, colY];
         inventoryList[rowX, colY] = null;
 
         return retrievedItem;
-    }
+    }*/
 }
