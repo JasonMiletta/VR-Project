@@ -77,6 +77,7 @@ GameObject:
   - 198: {fileID: 198000010297607728}
   - 199: {fileID: 199000011481215906}
   - 136: {fileID: 136000010451183222}
+  - 114: {fileID: 114000010260984600}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -512,7 +513,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013904078614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.762}
+  m_LocalPosition: {x: -1.0685283, y: -5.0530005, z: 14.639186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1352,12 +1353,12 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.64137924, b: 0, a: 1}
   m_Intensity: 1.65
-  m_Range: 10
+  m_Range: 2.5
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -1375,6 +1376,17 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114000010260984600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011344761096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7b7cfd1f1c1a4439d28aba21b30f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136000010451183222
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1438,7 +1450,7 @@ ParticleSystem:
   moveWithTransform: 0
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 633923730
+  randomSeed: -559068364
   InitialModule:
     serializedVersion: 2
     enabled: 1
