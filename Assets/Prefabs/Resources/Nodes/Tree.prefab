@@ -25,6 +25,7 @@ GameObject:
   - 95: {fileID: 95000012194913384}
   - 136: {fileID: 136000012114110378}
   - 114: {fileID: 114000014206882332}
+  - 135: {fileID: 135000011623186396}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -39,8 +40,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013229015032}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.7656725, y: 0.402, z: -8.987164}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 16.690826, y: 1.43, z: -3.8511963}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,6 +127,18 @@ MonoBehaviour:
   resource: {fileID: 1000011969469998, guid: 60acd78169a890243a68c7e6405113a2, type: 2}
   nodeHealth: 0
   dropCooldown: 0.2
+--- !u!135 &135000011623186396
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013229015032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.39789423
+  m_Center: {x: 0.00000008940697, y: 0, z: 1.25}
 --- !u!136 &136000012114110378
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -135,7 +148,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.19465598
-  m_Height: 1.3710171
+  m_Radius: 0.18194374
+  m_Height: 1.4109784
   m_Direction: 2
-  m_Center: {x: 0.00000008940697, y: 0, z: 0.3}
+  m_Center: {x: 0.00000008940697, y: 0, z: 0.25}
