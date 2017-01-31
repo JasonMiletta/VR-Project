@@ -270,7 +270,7 @@ MonoBehaviour:
   touchHighlightColor: {r: 1, g: 0.9724138, b: 0, a: 0}
   allowedTouchControllers: 0
   isGrabbable: 1
-  holdButtonToGrab: 1
+  holdButtonToGrab: 0
   stayGrabbedOnTeleport: 1
   validDrop: 1
   grabOverrideButton: 0
