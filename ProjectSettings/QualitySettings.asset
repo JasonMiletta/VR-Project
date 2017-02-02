@@ -170,6 +170,6 @@ QualitySettings:
     Tizen: 2
     WP8: 2
     Web: 5
-    WebGL: 2
+    WebGL: 5
     Windows Store Apps: 3
     iPhone: 2
