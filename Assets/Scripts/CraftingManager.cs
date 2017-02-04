@@ -6,11 +6,13 @@ using System.Collections;
 public class CraftingManager : MonoBehaviour {
 
     public GameObject craftingPrefab;
+    public GameObject craftingSlot1;
+    public GameObject craftingSlot2;
 
     private VRTK_ControllerEvents controllerEvents;
     private bool craftingToggledOn = false;
     private Object craftingObject;
-
+    
 	// Use this for initialization
 	void Start () {
         if(craftingPrefab == null)
@@ -22,7 +24,11 @@ public class CraftingManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if(craftingSlot1 != null && craftingSlot2 != null)
+        {
+            //TODO: Check crafting - show item preview to be grabbed
+            //  if grabbed, delete craftingslot items
+        }
     }
 
     private void OnEnable()
@@ -49,16 +55,14 @@ public class CraftingManager : MonoBehaviour {
 
     private void openCrafting()
     {
-        //TODO: Spawn crafting zone object
         craftingObject = Instantiate(craftingPrefab, this.transform.position, this.transform.rotation);
         craftingToggledOn = true;
     }
 
     private void closeCrafting()
     {
-        //TODO: hide crafting zone object
-        //TODO: Will need to handle dropping any inputted items
         Destroy(craftingObject);
         craftingToggledOn = false;
+        //TODO: Will need to handle dropping any inputted items
     }
 }
