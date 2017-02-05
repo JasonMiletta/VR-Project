@@ -1400,6 +1400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftingPrefab: {fileID: 1000011655726198, guid: 57c9586c61ba7f74680b2187c5208ea1,
     type: 2}
+  craftingSlot1: {fileID: 0}
+  craftingSlot2: {fileID: 0}
 --- !u!114 &114000011030502184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1555,7 +1557,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011043953146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef7e6bfad51b1f24f8bba548c8dcecb8, type: 3}
   m_Name: 
@@ -1660,7 +1662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408a45c3d6ea5804fa3bcaaaf8251ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableTeleport: 1
+  enableTeleport: 0
   controller: {fileID: 0}
   pointerOriginTransform: {fileID: 0}
   pointerMaterial: {fileID: 0}
@@ -1768,7 +1770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408a45c3d6ea5804fa3bcaaaf8251ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableTeleport: 1
+  enableTeleport: 0
   controller: {fileID: 0}
   pointerOriginTransform: {fileID: 0}
   pointerMaterial: {fileID: 0}
@@ -1951,7 +1953,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011043953146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f0ad608ee982c348aaa6aea32a3db61, type: 3}
   m_Name: 

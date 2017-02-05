@@ -19,7 +19,6 @@ public class CloudSpawner : MonoBehaviour {
 	void Update () {
 	    if(cooldown <= 0f)
         {
-            Debug.Log("Cloud!");
             float xCoord = Random.Range(-200, 200);
             GameObject newCloud = (GameObject) Instantiate(cloudPrefab, this.transform, false);
 

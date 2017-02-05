@@ -1,14 +1,37 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class LowPolyWater : MonoBehaviour {
+
     public Material material;
     public Camera _camera;
+    public int sizeX = 30;
+    public int sizeZ = 30;
+    public float waveScale = 1;
+    [Range(0, 1)]
+    public float noise = 0;
+    public enum GridType { Hexagonal, Square };
+    public GridType gridType;
+
+    bool generate;
+
+    const int maxVerts = ushort.MaxValue;
+    const float sin60 = 0.86602540378f;
+    const float inv_tan60 = 0.57735026919f;
+
+    // Deprecated
+    [HideInInspector]
+    public float scale = -1;
+    [HideInInspector]
+    public int size = -1; 
 
     void Start() {
-        if (material == null) return;
-        if(material.GetFloat("_EdgeBlend") > 0.1f) {
+        if (material == null || !material.HasProperty("_EdgeBlend")) return;
+        if (material.GetFloat("_EdgeBlend") > 0.1f) {
             SetupCamera();
         }
     }
@@ -18,45 +41,45 @@ public class LowPolyWater : MonoBehaviour {
         _camera.depthTextureMode |= DepthTextureMode.Depth;
     }
 
-    #region Editor code
-    #if UNITY_EDITOR
-    // the code below only compiles inside the editor!
-
-    public int size = 30;
-    public float scale = 1;
-    [Range(0,1)]
-    public float noise = 0;
-    public enum GridType {Hexagonal, Square};
-    public GridType gridType;
-
-    MeshFilter[] mfs;
-    bool generate;
-    float radius;
-    float prevScale;
-    float delta;
-    List<Vector3> verts = new List<Vector3>();
-    List<int> inds = new List<int>();
-
-    const int maxVerts = ushort.MaxValue;
-    const float sin60 = 0.86602540378f;
-    const float inv_tan60 = 0.57735026919f;
-
     void OnEnable() {
-        Start();
-        mfs = GetComponentsInChildren<MeshFilter>();
-        prevScale = scale;
-        Scale();
+        // update deprecated parameters
+        if(scale != -1 || size != -1) {
+            sizeX = size;
+            sizeZ = size;
+            waveScale = scale;
+            scale = -1;
+            size = -1;
+        }
+        Scale(material, waveScale);
+        generate = true;
+        Generate();
     }
 
-    void OnValidate() {
-        size = Mathf.Clamp(size, 1, 256);
-        mfs = GetComponentsInChildren<MeshFilter>();
-        radius = size;
+    public static void Scale(Material material, float scale) {
+        if (material == null || !material.HasProperty("__Scale")) return;
+        material.SetFloat("__Scale", scale);
+        material.SetFloat("__RHeight", material.GetFloat("_RHeight")* scale);
+        material.SetFloat("__RSpeed", material.GetFloat("_RSpeed")* scale);
+        material.SetFloat("__Height", material.GetFloat("_Height")* scale);
+        material.SetFloat("__Speed", material.GetFloat("_Speed")* scale);
+        var noiseTex = material.GetTexture("_NoiseTex");
+        if (noiseTex != null)
+            material.SetFloat("__TexSize", noiseTex.height * scale);
+    }
 
-        generate = GUI.changed || mfs==null || mfs.Length == 0;
+
+#if UNITY_EDITOR
+    // the code below only compiles inside the editor!
+
+    void OnValidate() {
+        sizeX = Mathf.Clamp(sizeX, 1, 256);
+        sizeZ = Mathf.Clamp(sizeZ, 1, 256);
+        var mfs = GetComponentsInChildren<MeshFilter>();
+
+        generate = GUI.changed || mfs == null || mfs.Length == 0;
         if (!generate) {
             for (int i = 0; i < mfs.Length; i++) {
-                if(mfs[i].sharedMesh == null) {
+                if (mfs[i].sharedMesh == null) {
                     generate = true;
                     break;
                 }
@@ -64,33 +87,41 @@ public class LowPolyWater : MonoBehaviour {
         }
     }
 
-    void Scale() {
-        if (material == null) return;
-        material.SetFloat("__Scale", scale);
+    void Update() {
+        Generate();
     }
 
-    void Update() {
-        if (material == null) return;
+#endif
+
+    void OnDestroy() {
+        CleanUp();
+    }
+
+    void CleanUp() {
+        // clear all previous objects
+        var mfs = GetComponentsInChildren<MeshFilter>();
+        for (int i = 0; i < mfs.Length; i++) {
+            if (Application.isPlaying) {
+                Destroy(mfs[i].gameObject);
+            } else {
+                DestroyImmediate(mfs[i].gameObject);
+            }
+        }
+    }
+
+    #region Generation code
+
+    void Generate() {
+        if (material == null || !material.HasProperty("_EdgeBlend")) return;
 
         if (material.GetFloat("_EdgeBlend") > 0.1f) {
             SetupCamera();
         }
 
-        var lScale = transform.localScale;
-        if (prevScale != scale) {
-            lScale.x = scale;
-            lScale.z = scale;
-            transform.localScale = lScale;
-            prevScale = scale;
-        } else if (lScale.x != scale || lScale.z != scale) {
-            scale = Mathf.Min(lScale.x, lScale.z);
-        }
-
-        Scale();
+        Scale(material, waveScale);
 
         if (!generate) return;
         generate = false;
-        mfs = GetComponentsInChildren<MeshFilter>();
         if (gridType == GridType.Hexagonal) {
             GenerateHexagonal();
         } else {
@@ -104,7 +135,7 @@ public class LowPolyWater : MonoBehaviour {
         return uv0 + uv1;
     }
 
-    void BakeMesh(float rotation = 0f) {
+    void BakeMesh(List<Vector3> verts, List<int> inds, float rotation = 0f) {
         var uvs = new List<Vector2>(inds.Count);
         var splitIndices = new List<int>(inds.Count);
         var splitVertices = new List<Vector3>(inds.Count);
@@ -136,13 +167,9 @@ public class LowPolyWater : MonoBehaviour {
             uvs.Add(uv);
         }
 
-        // clear all filters
-        for (int i = 0; i < mfs.Length; i++) {
-            DestroyImmediate(mfs[i].gameObject);
-        }
+        CleanUp();
 
         int numGO = Mathf.CeilToInt(splitVertices.Count / (float)maxVerts);
-        mfs = new MeshFilter[numGO];
         for (int i = 0, pos = 0; i < numGO; i++, pos += maxVerts) {
             var go = new GameObject("WaterChunk");
             go.transform.parent = transform;
@@ -163,37 +190,40 @@ public class LowPolyWater : MonoBehaviour {
             mesh.SetVertices(splitVertices.GetRange(pos, len));
             mesh.SetTriangles(splitIndices.GetRange(pos, len), 0);
             mesh.SetUVs(0, uvs.GetRange(pos, len));
-
+            mesh.hideFlags = HideFlags.HideAndDontSave;
             mf.mesh = mesh;
-
-            mfs[i] = mf;
+            go.hideFlags = HideFlags.HideAndDontSave;
         }
     }
 
-    void Add(List<Vector3> verts, Vector3 toAdd) {
-        if(noise > 0) {
-            var n = UnityEngine.Random.insideUnitCircle* noise *delta / 2f;
+    void Add(List<Vector3> verts, Vector3 toAdd, float delta) {
+        if (noise > 0) {
+            var n = UnityEngine.Random.insideUnitCircle * noise * delta / 2f;
             toAdd.x += n.x;
             toAdd.z += n.y;
         }
         verts.Add(toAdd);
     }
 
-    void GenerateSquare() {
-        verts.Clear();
-        inds.Clear();
-        var numVerts = size*2;
-        delta = radius*2f*sin60 / numVerts;
-        var deltaX = Vector3.right * delta;
-        var vO = new Vector3(-radius *sin60, 0, -radius *sin60);
+    //int sizeX, sizeZ;  //todo
 
-        for (int j = 0; j < numVerts + 1; j++) {
+    void GenerateSquare() {
+        var verts = new List<Vector3>();
+        var inds = new List<int>();
+        //90degr rot
+        var numVertsX = sizeX*2;
+        var numVertsZ = sizeZ*2;
+        var delta = sin60;
+        var deltaX = Vector3.right * delta;
+        var vO = new Vector3(-sizeX * sin60, 0, -sizeZ * sin60);
+
+        for (int j = 0; j < numVertsZ + 1; j++) {
             bool reverse = j % 2 != 0;
             var v = vO + Vector3.forward * j * delta;
-            int cols = numVerts + (reverse ? 2 : 1);
+            int cols = numVertsX + (reverse ? 2 : 1);
             for (int i = 0; i < cols; i++) {
-                Add(verts, v);
-                if (reverse && (i==0||i== cols-2)) {
+                Add(verts, v, delta);
+                if (reverse && (i == 0 || i == cols - 2)) {
                     v += deltaX / 2f;
                 } else {
                     v += deltaX;
@@ -201,10 +231,10 @@ public class LowPolyWater : MonoBehaviour {
             }
         }
         int iCur = 0;
-        for (int j = 0; j < numVerts; j++) {
+        for (int j = 0; j < numVertsZ; j++) {
             bool reverse = j % 2 != 0;
-            int ofs = numVerts + (reverse ? 2 : 1);
-            int cols = numVerts + (reverse ? 0 : 0);
+            int ofs = numVertsX + (reverse ? 2 : 1); 
+            int cols = numVertsX + (reverse ? 0 : 0);
 
             int iForw = iCur + ofs;
 
@@ -231,9 +261,9 @@ public class LowPolyWater : MonoBehaviour {
             }
             inds.Add(iCur);
             if (reverse) {
-                inds.Add(iForw );
+                inds.Add(iForw);
                 inds.Add(iCur + 1);
-                iCur+=2;
+                iCur += 2;
             } else {
                 inds.Add(iForw);
                 inds.Add(iForw + 1);
@@ -241,27 +271,27 @@ public class LowPolyWater : MonoBehaviour {
             }
         }
 
-        BakeMesh(90);
+        BakeMesh(verts, inds);
     }
 
     void GenerateHexagonal() {
-        verts.Clear();
-        inds.Clear();
+        var verts = new List<Vector3>();
+        var inds = new List<int>();
 
-        float delta = radius / size;
+        float delta = size / size;
         int vertIndex = 0;
         int curNumPoints = 0;
         int prevNumPoints = 0;
-        int numPointsCol0 = 2 * size + 1;
-        int colMin = -size;
-        int colMax = size;
+        int numPointsCol0 = sizeX+sizeZ + 1;
+        int colMin = -sizeX;
+        int colMax = sizeX;
 
         for (int i = colMin; i <= colMax; i++) {
             float x = sin60 * delta * i;
 
             int numPointsColi = numPointsCol0 - Mathf.Abs(i);
 
-            int rowMin = -size;
+            int rowMin = -(sizeZ+sizeX)/2;
             if (i < 0) rowMin += Mathf.Abs(i);
 
             int rowMax = rowMin + numPointsColi - 1;
@@ -273,7 +303,7 @@ public class LowPolyWater : MonoBehaviour {
 
                 var v = new Vector3(x, 0, z);
                 if (noise > 0) {
-                    var n = UnityEngine.Random.insideUnitCircle * noise * delta/2f;
+                    var n = UnityEngine.Random.insideUnitCircle * noise * delta / 2f;
                     v.x += n.x;
                     v.z += n.y;
                 }
@@ -290,8 +320,8 @@ public class LowPolyWater : MonoBehaviour {
 
                     if (i > colMin && i <= colMax) {
                         int padRight = 0;
-                        if (i > 0)  padRight = 1;
-                        inds.Add(vertIndex+1);
+                        if (i > 0) padRight = 1;
+                        inds.Add(vertIndex + 1);
                         inds.Add(vertIndex);
                         inds.Add(vertIndex - prevNumPoints + padRight);
                     }
@@ -303,12 +333,9 @@ public class LowPolyWater : MonoBehaviour {
             prevNumPoints = numPointsColi;
         }
 
-        BakeMesh();
+        BakeMesh(verts, inds);
     }
-
-
-
-    #endif
     #endregion
+
 }
 

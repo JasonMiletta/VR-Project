@@ -7,6 +7,7 @@ public class LowPolyWaterShaderGUI : ShaderGUI {
     enum Shading { Flat, VertexLit, PixelLit};
 
     MaterialProperty _Color = null;
+    MaterialProperty _Opacity = null;
 	MaterialProperty _Gloss = null;
 	MaterialProperty _Specular = null;
 	MaterialProperty _SpecColor = null;
@@ -31,6 +32,7 @@ public class LowPolyWaterShaderGUI : ShaderGUI {
     MaterialProperty _ShoreDistance = null;
 
     MaterialProperty _NoiseTex = null;
+    MaterialProperty _ZWrite = null;
 
     MaterialProperty __Direction = null;
     MaterialProperty __Scale = null;
@@ -45,6 +47,7 @@ public class LowPolyWaterShaderGUI : ShaderGUI {
 
     public void FindProperties(MaterialProperty[] props) {
         _Color = FindProperty("_Color", props);
+        _Opacity = FindProperty("_Opacity", props);
         _Gloss = FindProperty("_Gloss", props);
         _Specular = FindProperty("_Specular", props);
         _SpecColor = FindProperty("_SpecColor", props);
@@ -69,6 +72,7 @@ public class LowPolyWaterShaderGUI : ShaderGUI {
         _ShoreDistance = FindProperty("_ShoreDistance", props);
 
         _NoiseTex = FindProperty("_NoiseTex", props);
+        _ZWrite = FindProperty("_ZWrite", props);
 
         __Direction = FindProperty("__Direction", props);
         __Scale = FindProperty("__Scale", props);
@@ -90,6 +94,7 @@ public class LowPolyWaterShaderGUI : ShaderGUI {
 
         GUILayout.Label("Lighting", EditorStyles.boldLabel);
         materialEditor.ShaderProperty(_Color, _Color.displayName);
+        materialEditor.ShaderProperty(_Opacity, _Opacity.displayName);
         materialEditor.ShaderProperty(_Gloss, _Gloss.displayName);
         materialEditor.ShaderProperty(_Specular, _Specular.displayName);
         materialEditor.ShaderProperty(_SpecColor, _SpecColor.displayName);
@@ -145,6 +150,8 @@ public class LowPolyWaterShaderGUI : ShaderGUI {
         materialEditor.TexturePropertySingleLine(noiseLbl, _NoiseTex);
         if(_NoiseTex.textureValue!= null)
             __TexSize.floatValue = _NoiseTex.textureValue.height * scale;
+        materialEditor.ShaderProperty(_ZWrite, _ZWrite.displayName);
+
         //base.OnGUI(materialEditor, props);
     }
 

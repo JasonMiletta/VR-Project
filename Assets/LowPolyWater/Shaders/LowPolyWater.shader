@@ -1,12 +1,14 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'UNITY_INSTANCE_ID' with 'UNITY_VERTEX_INPUT_INSTANCE_ID'
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "LowPolyWater" {
 	Properties {
 		// Lighting
-		_Color ("Color", Color) = (0,0.5,0.7,0.7)
+		_Color ("Color", Color) = (0,0.5,0.7)
+		_Opacity ("Opacity", Range(0,1)) = 0.7
 		_Gloss ("Specular Gloss", Range(0,1)) = 0.6
 		_Specular ("Specular", Range(0.03,3)) = 0.6
-		_SpecColor("Specular Color", Color) = (1,1,1,1)
+		_SpecColor("Sun Color", Color) = (1,1,1,1)
 		_Smoothness("Smoothness", Range(0,1)) = 1
 		[NoScaleOffset] _FresnelTex ("Fresnel (A) ", 2D) = "" { }
 		[KeywordEnum(Flat, VertexLit, PixelLit)] _Shading("Shading", Float) = 0
@@ -31,7 +33,8 @@ Shader "LowPolyWater" {
 		_ShoreDistance("Shore Distance", Float) = 1
 
 		//Other
-		[NoScaleOffset] _NoiseTex ("Noise Texture (A)", 2D) = "white" {}
+		[NoScaleOffset] _NoiseTex("Noise Texture (A)", 2D) = "white" {}
+		[Toggle] _ZWrite ("Write To Depth Buffer", Float) = 0
 		
 		[HideInInspector] __Direction ("__Direction", Vector) = (0,0,0,0)
 		[HideInInspector] __Scale("__Scale", Float) = 1
@@ -42,9 +45,9 @@ Shader "LowPolyWater" {
 		[HideInInspector] __Height("__Height", Float) = 0
 	}
 	SubShader {
-		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
+		Tags { "RenderType"="Transparent" "Queue"="Transparent-200"}
 		LOD 200
-		ZWrite Off
+		ZWrite [_ZWrite]
 		
 		Pass {
 			Name "FORWARD"
@@ -65,7 +68,7 @@ Shader "LowPolyWater" {
 			#include "UnityLightingCommon.cginc"
 
 			#if UNITY_VERSION < 540
-				#define UNITY_INSTANCE_ID
+				#define UNITY_VERTEX_INPUT_INSTANCE_ID
 				#define UNITY_VERTEX_OUTPUT_STEREO
 				#define UNITY_SETUP_INSTANCE_ID(v)
 				#define UNITY_TRANSFER_INSTANCE_ID(v,o)
@@ -78,7 +81,7 @@ Shader "LowPolyWater" {
 			struct appdata {
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
-				UNITY_INSTANCE_ID
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct v2f {
@@ -88,16 +91,16 @@ Shader "LowPolyWater" {
 					half3 worldPos : TEXOORD1;
 					half3 worldNormal : TEXOORD2;
 				#else
-					fixed3 vertexLight : TEXCOORD1;
+					fixed4 vertexLight : TEXCOORD1;
 				#endif
 				#ifdef _EDGEBLEND_ON
 					float4 screenPos : TEXOORD3;
 				#endif
-				UNITY_INSTANCE_ID
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
-			half __RSpeed, __RHeight, _Gloss, _Specular, _Smoothness, __TexSize, __Speed;
+			half __RSpeed, __RHeight, _Opacity, _Gloss, _Specular, _Smoothness, __TexSize, __Speed;
 			sampler2D _NoiseTex, _FresnelTex; 
 			fixed4 _Color;
 
@@ -149,27 +152,31 @@ Shader "LowPolyWater" {
 				return noiseTex(half2(p.x, phase+p.y))*__RHeight;
 			}
 
-			inline half3 lighting(half3 normal, half3 worldPos){
+			inline half4 lighting(half3 normal, half3 worldPos){
 				float3 lightDir = _WorldSpaceLightPos0.xyz;
 				half3 worldViewDir = normalize(UnityWorldSpaceViewDir(worldPos));
 
 				//diffuse
-				half3 diff = _Color.rgb*max(0, dot (normal, lightDir));
+				half3 diff = _Color*max(0, dot (normal, lightDir));
 
 				//ambient
 				half3 ambient = max(0, ShadeSH9(half4(normal, 1.0)));
 
 				//fresnel
 				half dn = max (0, dot( worldViewDir, normal ));
-				half3 fres = ambient * tex2Dlod(_FresnelTex, half4(dn,dn,0,0) ).a;
+				half fresPower = tex2Dlod(_FresnelTex, half4(dn,dn,0,0) ).a;
+				half3 fres = ambient * fresPower;
 				fres = lerp(diff, fres, _Smoothness);
 
 				//specular
 				half3 h = normalize (lightDir + worldViewDir);
 				half nh = max (0, dot (normal, h));
-				half3 spec = _SpecColor.rgb*pow (nh, _Specular*128.0) * _Gloss;
+				half specPower = pow (nh, _Specular*128.0) * _Gloss;
+				half3 spec = _SpecColor.rgb*specPower;
 
-				return _Color.rgb*ambient + _LightColor0.rgb * (fres + spec);
+				return fixed4(
+					/*rgb:  */_Color*ambient + _LightColor0.rgb * (fres + spec),
+					/*alpha:*/_Opacity*(1+0.2*fresPower+specPower));
 			}
 
 			v2f vert (appdata v) {
@@ -219,6 +226,7 @@ Shader "LowPolyWater" {
 
 				#ifdef _EDGEBLEND_ON
 					o.screenPos = COMPUTESCREENPOS(o.pos);
+					o.screenPos.z = lerp(o.screenPos.w, mul(UNITY_MATRIX_V, pos0).z, unity_OrthoParams.w);
 				#endif
 
 				UNITY_TRANSFER_FOG(o,o.pos); // pass fog coordinates to pixel shader
@@ -230,18 +238,26 @@ Shader "LowPolyWater" {
 				UNITY_SETUP_INSTANCE_ID(i);
 
 				#ifdef _SHADING_PIXELLIT
-					fixed4 c = fixed4(lighting(i.worldNormal, i.worldPos), _Color.a);
+					fixed4 c = lighting(i.worldNormal, i.worldPos);
 				#else
-					fixed4 c = fixed4(i.vertexLight, _Color.a);
+					fixed4 c = i.vertexLight;
 				#endif
 
 				#ifdef _EDGEBLEND_ON
-					half sceneZ = LinearEyeDepth(
-						tex2Dproj(_CameraDepthTexture, 
-							UNITY_PROJ_COORD(i.screenPos)).r);
-					half diff = abs(sceneZ - i.screenPos.w)/_ShoreDistance;
-					diff = smoothstep(_ShoreIntensity, 1, diff);
-                    c = lerp(_ShoreColor, c, diff);
+					half sceneZ = SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos));
+					sceneZ = lerp(
+						LinearEyeDepth(sceneZ), //perspective
+						#if defined(UNITY_REVERSED_Z)
+							(1-sceneZ)*(_ProjectionParams.y - _ProjectionParams.z) - _ProjectionParams.y
+						#else
+							sceneZ*(_ProjectionParams.y - _ProjectionParams.z) - _ProjectionParams.y
+						#endif
+						, //orthographic
+						unity_OrthoParams.w);
+
+					half diff = abs(sceneZ - i.screenPos.z)/_ShoreDistance;
+					diff = smoothstep(_ShoreIntensity , 1 , diff);
+                    c = lerp(lerp(c, _ShoreColor, _ShoreColor.a), c, diff);
 				#endif
 
 				UNITY_APPLY_FOG(i.fogCoord, c); // apply fog
