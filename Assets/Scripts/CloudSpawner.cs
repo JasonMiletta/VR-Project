@@ -7,6 +7,7 @@ public class CloudSpawner : MonoBehaviour {
     public float cloudSpawnRate = 1f;
     public float cloudSpeed = 10f;
     public float cloudLifeTime = 10f;
+    public float cloudSpawnDistanceRange = 200; 
 
     private float cooldown = 0f;
 
@@ -19,7 +20,7 @@ public class CloudSpawner : MonoBehaviour {
 	void Update () {
 	    if(cooldown <= 0f)
         {
-            float xCoord = Random.Range(-200, 200);
+            float xCoord = Random.Range(-cloudSpawnDistanceRange, cloudSpawnDistanceRange);
             GameObject newCloud = (GameObject) Instantiate(cloudPrefab, this.transform, false);
 
             newCloud.transform.position += new Vector3(xCoord, 0, 0);
