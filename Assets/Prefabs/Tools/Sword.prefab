@@ -16,20 +16,20 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013374984514}
-  - 33: {fileID: 33000010255771634}
-  - 23: {fileID: 23000012034371750}
-  - 64: {fileID: 64000011520926310}
-  - 95: {fileID: 95000010333314940}
-  - 114: {fileID: 114000013768640596}
-  - 114: {fileID: 114000010636575424}
-  - 54: {fileID: 54000011851719546}
-  - 65: {fileID: 65000011717845874}
-  - 114: {fileID: 114000012006560628}
-  - 114: {fileID: 114000011633606394}
-  - 114: {fileID: 114000011075109952}
+  - component: {fileID: 4000013374984514}
+  - component: {fileID: 33000010255771634}
+  - component: {fileID: 23000012034371750}
+  - component: {fileID: 64000011520926310}
+  - component: {fileID: 95000010333314940}
+  - component: {fileID: 114000013768640596}
+  - component: {fileID: 114000010636575424}
+  - component: {fileID: 54000011851719546}
+  - component: {fileID: 65000011717845874}
+  - component: {fileID: 114000012006560628}
+  - component: {fileID: 114000011633606394}
+  - component: {fileID: 114000011075109952}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -42,9 +42,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010979181020}
+  - component: {fileID: 4000010979181020}
   m_Layer: 0
   m_Name: SwordAttachPoint
   m_TagString: Untagged
@@ -59,12 +59,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013647707064}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.018, y: -0.057, z: 0.1674}
+  m_LocalPosition: {x: -0, y: 0, z: -0.158}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
   m_Children: []
   m_Father: {fileID: 4000013374984514}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
 --- !u!4 &4000013374984514
 Transform:
   m_ObjectHideFlags: 1
@@ -72,13 +72,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011700177070}
   m_LocalRotation: {x: -0, y: 0.70710665, z: -0, w: 0.70710695}
-  m_LocalPosition: {x: 0.874, y: 0.659, z: -8.472}
+  m_LocalPosition: {x: 0.874, y: 1.25, z: -8.472}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000010979181020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000012034371750
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -95,7 +95,9 @@ MeshRenderer:
   - {fileID: 2100000, guid: 2f66110fa89db854d82d37805692e052, type: 2}
   - {fileID: 2100000, guid: 1213b37619330b44996e81094424278b, type: 2}
   - {fileID: 2100000, guid: 1193a52bbe9671c4dafaa124b44b03af, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -103,7 +105,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -143,6 +145,8 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e4ce2ed510f06404abc840624b4ef8c7, type: 3}
 --- !u!65 &65000011717845874
 BoxCollider:
@@ -197,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   thickness: 0.5
-  customOutlineModel: {fileID: 0}
+  customOutlineModel: {fileID: 1000011700177070}
   customOutlineModelPath: 
 --- !u!114 &114000011633606394
 MonoBehaviour:
