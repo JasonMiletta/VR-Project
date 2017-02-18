@@ -16,9 +16,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013504022664}
+  - component: {fileID: 4000013504022664}
   m_Layer: 0
   m_Name: ShieldAttachPoint
   m_TagString: Untagged
@@ -31,20 +31,21 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010750635224}
-  - 33: {fileID: 33000012294087082}
-  - 23: {fileID: 23000011639179770}
-  - 64: {fileID: 64000011033626558}
-  - 95: {fileID: 95000013553850680}
-  - 54: {fileID: 54000011814543970}
-  - 114: {fileID: 114000011316325088}
-  - 65: {fileID: 65000013149818882}
-  - 114: {fileID: 114000012460632928}
-  - 114: {fileID: 114000011707093214}
-  - 114: {fileID: 114000010110660548}
-  - 114: {fileID: 114000013950248862}
+  - component: {fileID: 4000010750635224}
+  - component: {fileID: 33000012294087082}
+  - component: {fileID: 23000011639179770}
+  - component: {fileID: 64000011033626558}
+  - component: {fileID: 95000013553850680}
+  - component: {fileID: 54000011814543970}
+  - component: {fileID: 114000011316325088}
+  - component: {fileID: 65000013149818882}
+  - component: {fileID: 114000012460632928}
+  - component: {fileID: 114000011707093214}
+  - component: {fileID: 114000010110660548}
+  - component: {fileID: 114000013950248862}
+  - component: {fileID: 114178955909578054}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -59,13 +60,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011105762538}
   m_LocalRotation: {x: 0.0000021685084, y: -0.7936373, z: -0.60839134, w: -0.0000028304592}
-  m_LocalPosition: {x: 0.35, y: 0.1183, z: -9.2522}
+  m_LocalPosition: {x: -0.217, y: 0.721, z: -9.162}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -105.076996, y: 0, z: -180}
   m_Children:
   - {fileID: 4000013504022664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -105.076996, y: 0, z: -180}
 --- !u!4 &4000013504022664
 Transform:
   m_ObjectHideFlags: 1
@@ -75,10 +76,10 @@ Transform:
   m_LocalRotation: {x: 0.00000004236892, y: -0, z: -1, w: 0.00000063198047}
   m_LocalPosition: {x: 0, y: -0.059, z: 0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.00002}
   m_Children: []
   m_Father: {fileID: 4000010750635224}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.00002}
 --- !u!23 &23000011639179770
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -93,7 +94,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 482555c5032afaf40bc3f0467a40fef5, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -101,7 +104,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -141,6 +144,8 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 3e112d0001eec214d99c7b50623bbeef, type: 3}
 --- !u!65 &65000013149818882
 BoxCollider:
@@ -255,3 +260,23 @@ MonoBehaviour:
   thickness: 0.5
   customOutlineModel: {fileID: 0}
   customOutlineModelPath: 
+--- !u!114 &114178955909578054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011105762538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthOnTouch: 0.1
+  durationOnTouch: 0.1
+  intervalOnTouch: 0.05
+  strengthOnGrab: 0.5
+  durationOnGrab: 0.1
+  intervalOnGrab: 0.05
+  strengthOnUse: 0
+  durationOnUse: 0
+  intervalOnUse: 0.05

@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114000012006560628}
   - component: {fileID: 114000011633606394}
   - component: {fileID: 114000011075109952}
+  - component: {fileID: 114092874977135778}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -261,3 +262,23 @@ MonoBehaviour:
   useOverrideButton: 8
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114092874977135778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011700177070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthOnTouch: 0.1
+  durationOnTouch: 0.1
+  intervalOnTouch: 0.05
+  strengthOnGrab: 0.5
+  durationOnGrab: 0.1
+  intervalOnGrab: 0.05
+  strengthOnUse: 0
+  durationOnUse: 0
+  intervalOnUse: 0.05

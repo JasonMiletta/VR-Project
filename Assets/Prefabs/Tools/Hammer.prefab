@@ -16,21 +16,22 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013872319034}
-  - 33: {fileID: 33000013119568980}
-  - 23: {fileID: 23000010149278364}
-  - 64: {fileID: 64000011137537106}
-  - 95: {fileID: 95000014075804044}
-  - 114: {fileID: 114000011607571534}
-  - 54: {fileID: 54000010938421048}
-  - 65: {fileID: 65000012262570752}
-  - 65: {fileID: 65000013963044754}
-  - 65: {fileID: 65000014269121884}
-  - 114: {fileID: 114000013918202624}
-  - 114: {fileID: 114000011100740978}
-  - 114: {fileID: 114000011226540936}
+  - component: {fileID: 4000013872319034}
+  - component: {fileID: 33000013119568980}
+  - component: {fileID: 23000010149278364}
+  - component: {fileID: 64000011137537106}
+  - component: {fileID: 95000014075804044}
+  - component: {fileID: 114000011607571534}
+  - component: {fileID: 54000010938421048}
+  - component: {fileID: 65000012262570752}
+  - component: {fileID: 65000013963044754}
+  - component: {fileID: 65000014269121884}
+  - component: {fileID: 114000013918202624}
+  - component: {fileID: 114000011100740978}
+  - component: {fileID: 114000011226540936}
+  - component: {fileID: 114211029032293720}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -43,9 +44,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000012396772142}
+  - component: {fileID: 4000012396772142}
   m_Layer: 0
   m_Name: HammerAttachPoint
   m_TagString: Untagged
@@ -62,10 +63,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: -0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013872319034}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013872319034
 Transform:
   m_ObjectHideFlags: 1
@@ -73,13 +74,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010077530376}
   m_LocalRotation: {x: -0.6900794, y: 0.15424159, z: -0.15424165, w: 0.6900794}
-  m_LocalPosition: {x: -0.094, y: 0.902, z: -9.535}
+  m_LocalPosition: {x: -0.094, y: 1.373, z: -9.535}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1.25}
-  m_LocalEulerAnglesHint: {x: -64.782005, y: 90.00001, z: -90.00001}
   m_Children:
   - {fileID: 4000012396772142}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -64.782005, y: 90.00001, z: -90.00001}
 --- !u!23 &23000010149278364
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -95,7 +96,9 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 4f29d79d84c6df340bd072215fa4eb8e, type: 2}
   - {fileID: 2100000, guid: e3760b9b9df30cb40b4cbbd64a9c4bc0, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -103,7 +106,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -143,6 +146,8 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2c7a294d65171ff41a76089deecfb0a9, type: 3}
 --- !u!65 &65000012262570752
 BoxCollider:
@@ -270,3 +275,23 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   detachDistance: 50
+--- !u!114 &114211029032293720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010077530376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthOnTouch: 0.1
+  durationOnTouch: 0.1
+  intervalOnTouch: 0.05
+  strengthOnGrab: 0.5
+  durationOnGrab: 0.1
+  intervalOnGrab: 0.05
+  strengthOnUse: 0
+  durationOnUse: 0
+  intervalOnUse: 0.05

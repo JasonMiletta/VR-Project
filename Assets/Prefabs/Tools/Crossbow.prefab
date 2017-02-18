@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000012454086346}
-  - 33: {fileID: 33000011857832292}
-  - 23: {fileID: 23000013027456620}
-  - 64: {fileID: 64000010434847666}
-  - 95: {fileID: 95000013685103984}
-  - 54: {fileID: 54000010011590400}
-  - 65: {fileID: 65000012144258742}
+  - component: {fileID: 4000012454086346}
+  - component: {fileID: 33000011857832292}
+  - component: {fileID: 23000013027456620}
+  - component: {fileID: 64000010434847666}
+  - component: {fileID: 95000013685103984}
+  - component: {fileID: 54000010011590400}
+  - component: {fileID: 65000012144258742}
   m_Layer: 0
   m_Name: LoadedBolt
   m_TagString: Untagged
@@ -37,21 +37,22 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010286465774}
-  - 33: {fileID: 33000013471574326}
-  - 23: {fileID: 23000013620258274}
-  - 64: {fileID: 64000011880286584}
-  - 95: {fileID: 95000012252029306}
-  - 54: {fileID: 54000012862623362}
-  - 65: {fileID: 65000011739448994}
-  - 65: {fileID: 65000012282655740}
-  - 65: {fileID: 65000011115543616}
-  - 114: {fileID: 114000013577677180}
-  - 114: {fileID: 114000011893842736}
-  - 114: {fileID: 114000011551939896}
-  - 114: {fileID: 114000012845307598}
+  - component: {fileID: 4000010286465774}
+  - component: {fileID: 33000013471574326}
+  - component: {fileID: 23000013620258274}
+  - component: {fileID: 64000011880286584}
+  - component: {fileID: 95000012252029306}
+  - component: {fileID: 54000012862623362}
+  - component: {fileID: 65000011739448994}
+  - component: {fileID: 65000012282655740}
+  - component: {fileID: 65000011115543616}
+  - component: {fileID: 114000013577677180}
+  - component: {fileID: 114000011893842736}
+  - component: {fileID: 114000011551939896}
+  - component: {fileID: 114000012845307598}
+  - component: {fileID: 114448766320894466}
   m_Layer: 0
   m_Name: Crossbow
   m_TagString: Untagged
@@ -64,9 +65,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013052834440}
+  - component: {fileID: 4000013052834440}
   m_Layer: 0
   m_Name: BoltLoadPoint
   m_TagString: Untagged
@@ -79,9 +80,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013292725148}
+  - component: {fileID: 4000013292725148}
   m_Layer: 0
   m_Name: CrossbowAttachPoint
   m_TagString: Untagged
@@ -96,14 +97,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012119652748}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.177, y: 0.551, z: -9.643245}
+  m_LocalPosition: {x: 0.369, y: 1.363, z: -10.125}
   m_LocalScale: {x: 1.0000098, y: 1.0000118, z: 1.0000087}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013292725148}
   - {fileID: 4000013052834440}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000012454086346
 Transform:
   m_ObjectHideFlags: 1
@@ -113,10 +114,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0.0141}
   m_LocalScale: {x: 1.64, y: 0.05, z: 0.05}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013052834440}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013052834440
 Transform:
   m_ObjectHideFlags: 1
@@ -126,11 +127,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.014, y: 0, z: 0.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000012454086346}
   m_Father: {fileID: 4000010286465774}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013292725148
 Transform:
   m_ObjectHideFlags: 1
@@ -140,10 +141,10 @@ Transform:
   m_LocalRotation: {x: -0.18301266, y: -0.18301266, z: -0.6830127, w: 0.6830127}
   m_LocalPosition: {x: -0.06, y: -0.0016, z: 0.0124}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -30, y: 0, z: -90.00001}
   m_Children: []
   m_Father: {fileID: 4000010286465774}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -30, y: 0, z: -90.00001}
 --- !u!23 &23000013027456620
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -158,7 +159,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 1e08cd272a080ab45a58f0ea1a0814d3, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -166,7 +169,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -189,7 +192,9 @@ MeshRenderer:
   - {fileID: 2100000, guid: 02b0a4f77bbb65a4c8cc0df5ab0d8423, type: 2}
   - {fileID: 2100000, guid: 4f29d79d84c6df340bd072215fa4eb8e, type: 2}
   - {fileID: 2100000, guid: e10c784bbf0a70345ba27637c5b43304, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -197,7 +202,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -259,6 +264,8 @@ MeshCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 22baa512418f2b84eb8d66a822c75ae9, type: 3}
 --- !u!64 &64000011880286584
 MeshCollider:
@@ -271,6 +278,8 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 9d93df15662496f4bb653481b563515b, type: 3}
 --- !u!65 &65000011115543616
 BoxCollider:
@@ -430,3 +439,23 @@ MonoBehaviour:
   boltLoadPoint: {fileID: 1000012558814678}
   projectileSpeed: 10
   loadedBolt: {fileID: 0}
+--- !u!114 &114448766320894466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012119652748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthOnTouch: 0.1
+  durationOnTouch: 0.1
+  intervalOnTouch: 0.05
+  strengthOnGrab: 0.5
+  durationOnGrab: 0.1
+  intervalOnGrab: 0.05
+  strengthOnUse: 0
+  durationOnUse: 0
+  intervalOnUse: 0.05
