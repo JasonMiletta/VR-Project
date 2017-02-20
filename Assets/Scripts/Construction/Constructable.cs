@@ -5,7 +5,9 @@ using VRTK;
 
 public class Constructable : VRTK_InteractableObject{
 
+    [Header("Constructible Settings", order = 4)]
     public GameObject constructObject;
+    public List<GameObject> Anchors;
 
     private ConstructionPointer constructionPointer;
 

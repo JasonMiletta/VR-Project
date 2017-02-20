@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
+[RequireComponent(typeof(VRTK_ControllerEvents))]
 public class ConstructionPointer : VRTK_BasePointer
 {
     [Header("Simple Pointer Settings", order = 3)]
@@ -21,19 +22,36 @@ public class ConstructionPointer : VRTK_BasePointer
     [Tooltip("Rescale the pointer cursor proportionally to the distance from this game object (useful when used as a gaze pointer).")]
     public bool pointerCursorRescaledAlongDistance = false;
 
+    public bool showConstructHighlight = true;
+    public GameObject highlightTemplate;
+
+    private GameObject constructHighlight;
+
     private GameObject pointerHolder;
     private GameObject pointerBeam;
+    [HideInInspector]
     public GameObject pointerTip;
     private Vector3 pointerTipScale = new Vector3(0.05f, 0.05f, 0.05f);
     private Vector3 pointerCursorOriginalScale = Vector3.one;
     private bool activeEnabled;
     private bool storedBeamState;
     private bool storedTipState;
+    private VRTK_ControllerEvents controllerEvents;
+
+    protected override void Start()
+    {
+        base.Start();
+        controllerEvents = GetComponent<VRTK_ControllerEvents>();
+    }
 
     protected override void OnEnable()
     {
         base.OnEnable();
         InitPointer();
+        if (controllerEvents)
+        {
+            controllerEvents.AliasUseOn += new ControllerInteractionEventHandler(createConstruct);
+        }
     }
 
     protected override void OnDisable()
@@ -42,6 +60,10 @@ public class ConstructionPointer : VRTK_BasePointer
         if (pointerHolder != null)
         {
             Destroy(pointerHolder);
+        }
+        if (controllerEvents)
+        {
+            controllerEvents.AliasUseOn -= new ControllerInteractionEventHandler(createConstruct);
         }
     }
 
@@ -60,7 +82,6 @@ public class ConstructionPointer : VRTK_BasePointer
                 if (pointerCursorMatchTargetNormal)
                 {
                     pointerTip.transform.up = pointerCollidedWith.normal;
-                    pointerTip.transform.position += new Vector3(0f, 0.5f, 0f);
                 }
                 if (pointerCursorRescaledAlongDistance)
                 {
@@ -133,6 +154,8 @@ public class ConstructionPointer : VRTK_BasePointer
             pointerTipRenderer.receiveShadows = false;
             pointerTipRenderer.material = pointerMaterial;
         }
+        constructHighlight = Instantiate(highlightTemplate);
+        constructHighlight.transform.SetParent(pointerHolder.transform);
 
         pointerCursorOriginalScale = pointerTip.transform.localScale;
         pointerTip.transform.name = string.Format("[{0}]BasePointer_SimplePointer_PointerTip", gameObject.name);
@@ -175,6 +198,10 @@ public class ConstructionPointer : VRTK_BasePointer
         {
             pointerTip.SetActive(tipState);
         }
+        if (constructHighlight)
+        {
+            constructHighlight.SetActive(tipState);
+        }
 
         if (pointerBeam && pointerBeam.GetComponentInChildren<Renderer>() && pointerVisibility == pointerVisibilityStates.Always_Off)
         {
@@ -201,6 +228,17 @@ public class ConstructionPointer : VRTK_BasePointer
         pointerBeam.transform.localScale = new Vector3(setThicknes, setThicknes, setLength);
         pointerBeam.transform.localPosition = new Vector3(0f, 0f, beamPosition);
         pointerTip.transform.localPosition = new Vector3(0f, 0f, setLength - (pointerTip.transform.localScale.z / 2));
+
+        constructHighlight.transform.localPosition = pointerTip.transform.localPosition;
+        //Debug.Log(constructHighlight.transform.position);
+        //Debug.Log(constructHighlight.transform.localPosition);
+        //Debug.Log(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.position);
+        //Debug.Log(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.localPosition);
+        //Transform offset = constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.Tra
+        //Debug.Log(constructHighlight.transform.TransformPoint(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.position));
+       // Debug.Log(constructHighlight.transform.TransformPoint(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.localPosition));
+        //constructHighlight.transform.localPosition += new Vector3(0f, 0.5f, 0f);
+        constructHighlight.transform.rotation = Quaternion.Euler(0f, Vector3.Angle(GetOriginPosition(), constructHighlight.transform.position), 0f);
 
         pointerHolder.transform.position = GetOriginPosition();
         pointerHolder.transform.rotation = GetOriginRotation();
@@ -247,5 +285,13 @@ public class ConstructionPointer : VRTK_BasePointer
         }
 
         return OverrideBeamLength(actualLength);
+    }
+
+    private void createConstruct(object sender, ControllerInteractionEventArgs e)
+    {
+        if (highlightTemplate.activeSelf)
+        {
+            Instantiate(highlightTemplate.GetComponent<ConstructableHighlight>().construct, constructHighlight.transform.position, constructHighlight.transform.rotation);
+        }
     }
 }

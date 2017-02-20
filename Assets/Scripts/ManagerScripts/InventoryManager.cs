@@ -30,14 +30,20 @@ public class InventoryManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        controllerEvents.AliasMenuOn += new ControllerInteractionEventHandler(doToggleInventory);
-        controllerEvents.AliasMenuOff += new ControllerInteractionEventHandler(stopTrackingController);
+        if (controllerEvents)
+        {
+            controllerEvents.AliasMenuOn += new ControllerInteractionEventHandler(doToggleInventory);
+            controllerEvents.AliasMenuOff += new ControllerInteractionEventHandler(stopTrackingController);
+        }
     }
 
     private void OnDisable()
     {
-        controllerEvents.AliasMenuOn -= new ControllerInteractionEventHandler(doToggleInventory);
-        controllerEvents.AliasMenuOff += new ControllerInteractionEventHandler(stopTrackingController);
+        if (controllerEvents)
+        {
+            controllerEvents.AliasMenuOn -= new ControllerInteractionEventHandler(doToggleInventory);
+            controllerEvents.AliasMenuOff -= new ControllerInteractionEventHandler(stopTrackingController);
+        }
     }
 
     private void doToggleInventory(object sender, ControllerInteractionEventArgs e)

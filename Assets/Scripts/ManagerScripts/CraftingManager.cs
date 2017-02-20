@@ -33,13 +33,18 @@ public class CraftingManager : MonoBehaviour {
 
     private void OnEnable()
     {
-
-        controllerEvents.AliasMenuOn += new ControllerInteractionEventHandler(doToggleCrafting);
+        if (controllerEvents)
+        {
+            controllerEvents.AliasMenuOn += new ControllerInteractionEventHandler(doToggleCrafting);
+        }
     }
 
     private void OnDisable()
     {
-        controllerEvents.AliasMenuOn -= new ControllerInteractionEventHandler(doToggleCrafting);
+        if (controllerEvents)
+        {
+            controllerEvents.AliasMenuOn -= new ControllerInteractionEventHandler(doToggleCrafting);
+        }
     }
 
     private void doToggleCrafting(object sender, ControllerInteractionEventArgs e)
