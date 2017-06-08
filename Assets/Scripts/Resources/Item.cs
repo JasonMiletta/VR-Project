@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class Item : MonoBehaviour {
+    public enum ItemType {Rock, Wood, Stick};
+
+    [SerializeField]
+    public ItemType itemType;
 
 	// Use this for initialization
 	void Start () {
