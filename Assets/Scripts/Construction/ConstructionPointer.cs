@@ -154,8 +154,13 @@ public class ConstructionPointer : VRTK_BasePointer
             pointerTipRenderer.receiveShadows = false;
             pointerTipRenderer.material = pointerMaterial;
         }
+
         constructHighlight = Instantiate(highlightTemplate);
         constructHighlight.transform.SetParent(pointerHolder.transform);
+        if (!showConstructHighlight)
+        {
+            constructHighlight.SetActive(false);
+        }
 
         pointerCursorOriginalScale = pointerTip.transform.localScale;
         pointerTip.transform.name = string.Format("[{0}]BasePointer_SimplePointer_PointerTip", gameObject.name);
@@ -198,7 +203,7 @@ public class ConstructionPointer : VRTK_BasePointer
         {
             pointerTip.SetActive(tipState);
         }
-        if (constructHighlight)
+        if (constructHighlight && showConstructHighlight)
         {
             constructHighlight.SetActive(tipState);
         }
@@ -230,14 +235,6 @@ public class ConstructionPointer : VRTK_BasePointer
         pointerTip.transform.localPosition = new Vector3(0f, 0f, setLength - (pointerTip.transform.localScale.z / 2));
 
         constructHighlight.transform.localPosition = pointerTip.transform.localPosition;
-        //Debug.Log(constructHighlight.transform.position);
-        //Debug.Log(constructHighlight.transform.localPosition);
-        //Debug.Log(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.position);
-        //Debug.Log(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.localPosition);
-        //Transform offset = constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.Tra
-        //Debug.Log(constructHighlight.transform.TransformPoint(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.position));
-       // Debug.Log(constructHighlight.transform.TransformPoint(constructHighlight.GetComponent<ConstructableHighlight>().bottomAnchor.transform.localPosition));
-        //constructHighlight.transform.localPosition += new Vector3(0f, 0.5f, 0f);
         constructHighlight.transform.rotation = Quaternion.Euler(0f, Vector3.Angle(GetOriginPosition(), constructHighlight.transform.position), 0f);
 
         pointerHolder.transform.position = GetOriginPosition();
@@ -289,9 +286,10 @@ public class ConstructionPointer : VRTK_BasePointer
 
     private void createConstruct(object sender, ControllerInteractionEventArgs e)
     {
-        if (highlightTemplate.activeSelf)
+        if (showConstructHighlight && highlightTemplate.activeSelf)
         {
-            Instantiate(highlightTemplate.GetComponent<ConstructableHighlight>().construct, constructHighlight.transform.position, constructHighlight.transform.rotation);
+            GameObject construct = Instantiate(highlightTemplate.GetComponent<ConstructableHighlight>().construct, constructHighlight.transform.position, constructHighlight.transform.rotation);
+            
         }
     }
 }

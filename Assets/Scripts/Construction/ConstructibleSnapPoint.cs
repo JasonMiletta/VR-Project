@@ -41,9 +41,13 @@ public class ConstructibleSnapPoint : MonoBehaviour {
     {
         if (other.GetComponent<VRTK_PlayerObject>() && other.GetComponent<VRTK_PlayerObject>().objectType == VRTK_PlayerObject.ObjectTypes.Pointer)
         {
+
+            GameObject pointerObject = other.transform.parent.gameObject;
             highlight.SetActive(true);
-            
-            other.transform.parent.gameObject.GetComponentInChildren<ConstructableHighlight>().gameObject.SetActive(false);
+            if (pointerObject.GetComponentInChildren<ConstructableHighlight>() != null) { 
+                GameObject pointerHighlight = pointerObject.GetComponentInChildren<ConstructableHighlight>().gameObject;
+                pointerHighlight.SetActive(false);
+            }
         }
     }
 
@@ -51,9 +55,14 @@ public class ConstructibleSnapPoint : MonoBehaviour {
     {
         if (other.GetComponent<VRTK_PlayerObject>() && other.GetComponent<VRTK_PlayerObject>().objectType == VRTK_PlayerObject.ObjectTypes.Pointer)
         {
+            GameObject pointerObject = other.transform.parent.gameObject;
             highlight.SetActive(false);
-            other.transform.parent.gameObject.GetComponentInChildren<ConstructableHighlight>().gameObject.SetActive(true);
-
+            if (pointerObject.GetComponentInChildren<ConstructableHighlight>() != null)
+            {
+                GameObject pointerHighlight = pointerObject.GetComponentInChildren<ConstructableHighlight>().gameObject;
+                
+                pointerHighlight.SetActive(true);
+            }
         }
     }
 
