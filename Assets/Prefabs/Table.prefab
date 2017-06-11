@@ -16,17 +16,17 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013231665078}
-  - 33: {fileID: 33000013662033564}
-  - 23: {fileID: 23000010165844710}
-  - 54: {fileID: 54000010637364404}
-  - 65: {fileID: 65000011258157706}
-  - 65: {fileID: 65000011816864068}
-  - 65: {fileID: 65000010356882284}
-  - 65: {fileID: 65000011215275958}
-  - 65: {fileID: 65000011921621740}
+  - component: {fileID: 4000013231665078}
+  - component: {fileID: 33000013662033564}
+  - component: {fileID: 23000010165844710}
+  - component: {fileID: 54000010637364404}
+  - component: {fileID: 65000011258157706}
+  - component: {fileID: 65000011816864068}
+  - component: {fileID: 65000010356882284}
+  - component: {fileID: 65000011215275958}
+  - component: {fileID: 65000011921621740}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -40,13 +40,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010430438280}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.10058076, y: 0.69, z: -10.673871}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000059604645, z: -0.000000047210005, w: 0.7071067}
+  m_LocalPosition: {x: 0.2, y: 1.123, z: -8.653}
   m_LocalScale: {x: 10, y: 10, z: 10}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000010165844710
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -62,7 +62,9 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 93ccb5d94d772cb4ea1a5b51d5823552, type: 2}
   - {fileID: 2100000, guid: 4f29d79d84c6df340bd072215fa4eb8e, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -70,7 +72,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -91,7 +93,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010430438280}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
