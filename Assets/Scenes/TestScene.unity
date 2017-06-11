@@ -177,11 +177,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114951192287438650, guid: ff3ff131a3339b64d8f9e14cddde0b02,
-        type: 2}
-      propertyPath: dustEffect
-      value: 
-      objectReference: {fileID: 1718619308}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff3ff131a3339b64d8f9e14cddde0b02, type: 2}
   m_IsPrefabParent: 0
@@ -2402,11 +2397,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65cdfe8ecfb6a00439cc851c7eba53db, type: 2}
   m_IsPrefabParent: 0
---- !u!198 &1718619308 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 198005961523837360, guid: ff3ff131a3339b64d8f9e14cddde0b02,
-    type: 2}
-  m_PrefabInternal: {fileID: 16524024}
 --- !u!1001 &1719875245
 Prefab:
   m_ObjectHideFlags: 0

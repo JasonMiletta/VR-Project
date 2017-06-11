@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce77362fc47c187428e022673592b893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dustEffect: {fileID: 198005961523837360}
   Latch: {fileID: 1907782764262784}
   isClosed: 1
 --- !u!138 &138816188219739188
