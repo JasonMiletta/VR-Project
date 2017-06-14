@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Item : MonoBehaviour {
-    public enum ItemType {Rock, Wood, Stick};
+
+    public enum ItemType {Weapon, Tool, Rock, Wood, Stick};
 
     [SerializeField]
     public ItemType itemType;

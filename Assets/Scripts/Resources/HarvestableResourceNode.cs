@@ -15,7 +15,7 @@ public class HarvestableResourceNode : MonoBehaviour {
 
     public void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.GetComponent<Item>() != null)
+        if (col.gameObject.GetComponent<Item>() != null && col.gameObject.GetComponent<Item>().itemType == Item.ItemType.Tool)
         {
             harvestedHit(col);
         }
