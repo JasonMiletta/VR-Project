@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
     
@@ -11,7 +9,7 @@ public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        currentSceneName = EditorSceneManager.GetActiveScene().name;
+        currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
         var i = 0;
         foreach(string s in SceneNameList)
@@ -46,12 +44,12 @@ public class MenuManager : MonoBehaviour {
     {
         if (currentSceneIndex > SceneNameList.Length)
         {
-            EditorSceneManager.LoadScene(SceneNameList[0]);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneNameList[0]);
             currentSceneIndex = 0;
         }
         else
         {
-            EditorSceneManager.LoadScene(SceneNameList[currentSceneIndex]);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneNameList[currentSceneIndex]);
         }
     }
 }
