@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 1ca95d628b7502d4c88b192fb73a7ba8
+timeCreated: 1500231460
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: detail_chimneyTop_8
+    100002: floor_square_6
+    100004: floor_square_7
+    100006: planks_floor_12
+    100008: roof_canvas_9
+    100010: roof_end_5
+    100012: roof_split_0
+    100014: structure_pole_10
+    100016: structure_pole_11
+    100018: structure_poles_2
+    100020: wall_borderDoorway_1
+    100022: wall_doorwayRound_4
+    100024: wall_edge_14
+    100026: wall_straight_16
+    100028: wall_windowRound_13
+    100030: wall_windowRound_15
+    100032: wall_windowWoodWide%_3
+    100034: //RootNode
+    400000: detail_chimneyTop_8
+    400002: floor_square_6
+    400004: floor_square_7
+    400006: planks_floor_12
+    400008: roof_canvas_9
+    400010: roof_end_5
+    400012: roof_split_0
+    400014: structure_pole_10
+    400016: structure_pole_11
+    400018: structure_poles_2
+    400020: wall_borderDoorway_1
+    400022: wall_doorwayRound_4
+    400024: wall_edge_14
+    400026: wall_straight_16
+    400028: wall_windowRound_13
+    400030: wall_windowRound_15
+    400032: wall_windowWoodWide%_3
+    400034: //RootNode
+    2300000: detail_chimneyTop_8
+    2300002: floor_square_6
+    2300004: floor_square_7
+    2300006: planks_floor_12
+    2300008: roof_canvas_9
+    2300010: roof_end_5
+    2300012: roof_split_0
+    2300014: structure_pole_10
+    2300016: structure_pole_11
+    2300018: structure_poles_2
+    2300020: wall_borderDoorway_1
+    2300022: wall_doorwayRound_4
+    2300024: wall_edge_14
+    2300026: wall_straight_16
+    2300028: wall_windowRound_13
+    2300030: wall_windowRound_15
+    2300032: wall_windowWoodWide%_3
+    3300000: detail_chimneyTop_8
+    3300002: floor_square_6
+    3300004: floor_square_7
+    3300006: planks_floor_12
+    3300008: roof_canvas_9
+    3300010: roof_end_5
+    3300012: roof_split_0
+    3300014: structure_pole_10
+    3300016: structure_pole_11
+    3300018: structure_poles_2
+    3300020: wall_borderDoorway_1
+    3300022: wall_doorwayRound_4
+    3300024: wall_edge_14
+    3300026: wall_straight_16
+    3300028: wall_windowRound_13
+    3300030: wall_windowRound_15
+    3300032: wall_windowWoodWide%_3
+    4300000: roof_split_0
+    4300002: wall_borderDoorway_1
+    4300004: structure_poles_2
+    4300006: wall_windowWoodWide%_3
+    4300008: wall_doorwayRound_4
+    4300010: roof_end_5
+    4300012: floor_square_6
+    4300014: floor_square_7
+    4300016: detail_chimneyTop_8
+    4300018: roof_canvas_9
+    4300020: structure_pole_10
+    4300022: structure_pole_11
+    4300024: planks_floor_12
+    4300026: wall_windowRound_13
+    4300028: wall_edge_14
+    4300030: wall_windowRound_15
+    4300032: wall_straight_16
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.25
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
