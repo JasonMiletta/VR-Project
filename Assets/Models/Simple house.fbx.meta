@@ -62,6 +62,17 @@ ModelImporter:
     4300016: fence_wood_8
     4300018: fence_wood_9
     4300020: planks_floor_10
+    6400000: door_square_6
+    6400002: fence_wood_8
+    6400004: fence_wood_9
+    6400006: fence_woodGate_7
+    6400008: floor_square_3
+    6400010: planks_floor_10
+    6400012: roof_point_0
+    6400014: wall_doorwaySquare_2
+    6400016: wall_straight_1
+    6400018: wall_straight_5
+    6400020: wall_windowSquare_4
   materials:
     importMaterials: 1
     materialName: 0
@@ -88,7 +99,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.25
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

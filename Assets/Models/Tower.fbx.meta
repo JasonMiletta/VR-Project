@@ -192,6 +192,43 @@ ModelImporter:
     4300068: wall_borderBricks_34
     4300070: wall_borderBricks_35
     4300072: wall_borderBricks_36
+    6400000: battlement_corner_26
+    6400002: battlement_corner_27
+    6400004: battlement_cornerDiagonal_5
+    6400006: battlement_cornerDiagonal_6
+    6400008: detail_bannerPoint%_28
+    6400010: detail_flagSquare%_16
+    6400012: detail_flagSquare%_17
+    6400014: floor_corner_12
+    6400016: floor_corner_13
+    6400018: floor_corner_7
+    6400020: floor_corner_8
+    6400022: floor_half_25
+    6400024: floor_square_14
+    6400026: floor_square_15
+    6400028: floor_square_24
+    6400030: stairs_cornerStone%_10
+    6400032: stairs_cornerStone%_9
+    6400034: wall_borderBricks_29
+    6400036: wall_borderBricks_30
+    6400038: wall_borderBricks_31
+    6400040: wall_borderBricks_32
+    6400042: wall_borderBricks_33
+    6400044: wall_borderBricks_34
+    6400046: wall_borderBricks_35
+    6400048: wall_borderBricks_36
+    6400050: wall_cornerDiagonal_0
+    6400052: wall_cornerDiagonal_1
+    6400054: wall_cornerDiagonal_2
+    6400056: wall_cornerDiagonal_3
+    6400058: wall_doorwaySquare_20
+    6400060: wall_straight_11
+    6400062: wall_straight_18
+    6400064: wall_straight_21
+    6400066: wall_straight_4
+    6400068: wall_windowSquare_19
+    6400070: wall_windowSquare_22
+    6400072: wall_windowSquare_23
   materials:
     importMaterials: 1
     materialName: 0

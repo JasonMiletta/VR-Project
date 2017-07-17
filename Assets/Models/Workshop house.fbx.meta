@@ -92,6 +92,23 @@ ModelImporter:
     4300028: wall_edge_14
     4300030: wall_windowRound_15
     4300032: wall_straight_16
+    6400000: detail_chimneyTop_8
+    6400002: floor_square_6
+    6400004: floor_square_7
+    6400006: planks_floor_12
+    6400008: roof_canvas_9
+    6400010: roof_end_5
+    6400012: roof_split_0
+    6400014: structure_pole_10
+    6400016: structure_pole_11
+    6400018: structure_poles_2
+    6400020: wall_borderDoorway_1
+    6400022: wall_doorwayRound_4
+    6400024: wall_edge_14
+    6400026: wall_straight_16
+    6400028: wall_windowRound_13
+    6400030: wall_windowRound_15
+    6400032: wall_windowWoodWide%_3
   materials:
     importMaterials: 1
     materialName: 0
@@ -118,7 +135,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.25
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
